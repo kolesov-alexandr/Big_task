@@ -30,6 +30,22 @@ class Example(QWidget):
             lon += 0.001
             lat += 0.001
             self.spn = f"{lon},{lat}"
+        if event.key() == Qt.Key_Up:
+            lon, lat = map(float, self.ll.split(","))
+            lat += 0.001
+            self.ll = f"{lon},{lat}"
+        if event.key() == Qt.Key_Right:
+            lon, lat = map(float, self.ll.split(","))
+            lon += 0.001
+            self.ll = f"{lon},{lat}"
+        if event.key() == Qt.Key_Down:
+            lon, lat = map(float, self.ll.split(","))
+            lat -= 0.001
+            self.ll = f"{lon},{lat}"
+        if event.key() == Qt.Key_Left:
+            lon, lat = map(float, self.ll.split(","))
+            lon -= 0.001
+            self.ll = f"{lon},{lat}"
         Full_search.make_map(Full_search.set_map_params(self.ll, self.spn))
         self.pixmap = QPixmap(self.map_file)
         self.image.setPixmap(self.pixmap)
